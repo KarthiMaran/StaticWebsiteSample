@@ -19,6 +19,8 @@ pipeline {
                 // Inside Docker, /var/jenkins_home is a safe place to "deploy" for this demo
                 sh 'mkdir -p /var/jenkins_home/my_website'
                 sh 'cp index.html /var/jenkins_home/my_website/index.html'
+
+            publishHTML(target: [allowMissing: false,alwaysLinkToLastBuild: true,keepAll: true,reportDir: '.',reportFiles: 'index.html',reportName: 'Live Website View'])
             }
         }
     }
